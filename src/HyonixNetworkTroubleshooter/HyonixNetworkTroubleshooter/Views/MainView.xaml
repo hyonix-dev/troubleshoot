@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="HyonixNetworkTroubleshooter.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:HyonixNetworkTroubleshooter.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:MainViewModel />
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <ProgressBar Margin="12,7"
+                         Value="{Binding ProgressValue}" />
+            <Button x:Name="Start"
+                    Grid.Column="1"
+                    Margin="15,7"
+                    FontSize="15"
+                    FontWeight="Medium"
+                    Content="{Binding ButtonText}"
+                    Command="{Binding Start}" />
+        </Grid>
+
+        <Border Margin="12"
+                BorderThickness="1"
+                BorderBrush="Gray"
+                Grid.Row="1">
+
+            <TextBlock TextWrapping="Wrap"
+                       Margin="10">
+                <Run Text="This tool is a network troubleshooter that helps client quickly run MTR (MyTraceroute) to multiple predefined endpoint." />
+                <LineBreak />
+                <LineBreak />
+                <Run Text="Once the test is completed, please save the result and attach on the ticket." />
+                <LineBreak />
+                <Run Text="Tutorial:" />
+                <Hyperlink NavigateUri="https://troubleshoot.hyonix.com/tutorial"
+                           RequestNavigate="NavigateToWebsite">
+                    https://troubleshoot.hyonix.com/tutorial"
+                </Hyperlink>
+                <LineBreak />
+                <LineBreak />
+                <Run Text="This is an open-sourced tool that can be viewed or downloaded here: " />
+
+                <LineBreak />
+                <Hyperlink NavigateUri="https://troubleshoot.hyonix.com/"
+                           RequestNavigate="NavigateToWebsite">
+                    https://troubleshoot.hyonix.com/
+                </Hyperlink>
+            </TextBlock>
+
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="10,0">
+                <Hyperlink  NavigateUri="https://www.hyonix.com"
+                            RequestNavigate="NavigateToWebsite">
+                    https://www.hyonix.com
+                </Hyperlink>
+
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Grid.Column="1"
+                       Text="version: 1.0" />
+        </Grid>
+    </Grid>
+</UserControl>
